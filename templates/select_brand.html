@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Brand</title>
+</head>
+<body>
+    <h1>Select Brand</h1>
+    <form method="post">
+        {% csrf_token %}
+        <select name="brand">
+            <option value="">Select Brand</option>
+            {% for brand in brands %}
+                <option value="{{ brand.id }}">{{ brand.name }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <input type="submit" value="Next">
+    </form>
+</body>
+</html>
