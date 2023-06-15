@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import BodyType, Brand, CarModel
+from .models import BodyType, Brand, CarModel, Car
 
 
 def home(request):
@@ -23,13 +23,30 @@ def select_brand(request, body_type_id):
     return render(request, 'select_brand.html', {'brands': brands})
 
 
-
-
 def select_model(request, brand_id):
     brand = Brand.objects.get(id=brand_id)
-    body_type = Brand.objects.get(id=brand_id)
     car_models = CarModel.objects.filter(brand=brand)
     if request.method == 'POST':
         selected_car_model_id = int(request.POST.get('car_model'))
-        return redirect('select_car_model', model_id=selected_car_model_id)
+        return redirect('select_car', model_id=selected_car_model_id)
     return render(request, 'select_model.html', {'car_models': car_models})
+
+
+def select_car(request, model_id):
+    car_model = CarModel.objects.get(id=model_id)
+    cars = Car.objects.filter(model=car_model)
+    if request.method == 'POST':
+        selected_year = int(request.POST.get('year'))
+        selected_fuel_type = request.POST.get('fuel_type')
+        selected_engine = int(request.POST.get('engine'))
+        car = cars.filter(year=selected_year, fuel_type=selected_fuel_type, engine=selected_engine).first()
+        return render(request, 'car_results.html', {'car': car})
+    return render(request, 'select_car.html', {'car_model': car_model, 'cars': cars})
+
+
+def car_details(request):
+    if request.method == 'POST':
+        car_id = int(request.POST.get('car_id'))
+        car = Car.objects.get(id=car_id)
+        return render(request, 'car_results.html', {'car': car})
+    return redirect('home')

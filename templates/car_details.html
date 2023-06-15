@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <br><br>
+    <a href="{% url 'home' %}">Home</a>
+    <br>
+    <a href="{% url 'select_body_type' %}">Select Body Type</a>
+    <br>
+    <a href="{% url 'select_brand' body_type_id=1 %}">Select Brand</a>
+    <br>
+    <title>Car Results</title>
+</head>
+<body>
+    <h1>Car Results</h1>
+    <p>Fuel Consumption: {{ car.fuel_consumption }}</p>
+    <p>Cost Annual: {{ car.cost_annual }}</p>
+    <p>Major Repair: {{ car.major_repair }}</p>
+</body>
+</html>

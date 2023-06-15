@@ -24,4 +24,6 @@ urlpatterns = [
     path('select_body_type/', views.select_body_type, name='select_body_type'),
     path('select_brand/<int:body_type_id>/', views.select_brand, name='select_brand'),
     path('select_model/<int:brand_id>/', views.select_model, name='select_model'),
+    path('select_car/<int:model_id>/', views.select_car, name='select_car'),
+    path('car_details/', views.car_details, name='car_details'),
 ]

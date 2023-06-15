@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <br><br>
+    <a href="{% url 'home' %}">Home</a>
+    <br>
+    <a href="{% url 'select_body_type' %}">Select Body Type</a>
+    <br>
+    <a href="{% url 'select_brand' body_type_id=1 %}">Select Brand</a>
+<head>
+    <title>Select Car</title>
+</head>
+<body>
+    <h1>Select Car</h1>
+    <form method="POST" action="{% url 'select_car' model_id=car_model.id %}">
+        {% csrf_token %}
+        <label for="year">Year:</label>
+        <select name="year" id="year">
+            {% for car in cars %}
+                <option value="{{ car.year }}">{{ car.year }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="fuel_type">Fuel Type:</label>
+        <select name="fuel_type" id="fuel_type">
+            {% for car in cars %}
+                <option value="{{ car.fuel_type }}">{{ car.fuel_type }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="engine">Engine:</label>
+        <select name="engine" id="engine">
+            {% for car in cars %}
+                <option value="{{ car.engine }}">{{ car.engine }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <input type="submit" value="Next">
+    </form>
+</body>
+</html>
