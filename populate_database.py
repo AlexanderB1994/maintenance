@@ -196,13 +196,13 @@ for car_model in car_models:
 #     {'model_id': 1, 'year': 2022, 'fuel_type': 'Gasoline', 'engine': '2.0', 'fuel_consumption': 7.5, 'cost_annual': 500, 'major_repair': 1200},
 #     {'model_id': 2, 'year': 2021, 'fuel_type': 'Diesel', 'engine': '1.5', 'fuel_consumption': 6.5, 'cost_annual': 300, 'major_repair': 1900},
 #     {'model_id': 3, 'year': 2019, 'fuel_type': 'Gasoline', 'engine': '3.0', 'fuel_consumption': 9.5, 'cost_annual': 900, 'major_repair': 13500},
-
+#
 # ]
 #
 # for car in cars:
 #     car_model = CarModel.objects.get(pk=car['model_id'])
 #     Car.objects.create(
-#         model=car_model,
+#         model=car_model.id,
 #         year=car['year'],
 #         fuel_type=car['fuel_type'],
 #         engine=car['engine'],
