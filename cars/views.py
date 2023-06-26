@@ -32,6 +32,7 @@ def select_model(request, brand_id):
     return render(request, 'select_model.html', {'car_models': car_models})
 
 
+
 def select_car(request, model_id):
     car_model = CarModel.objects.get(id=model_id)
     cars = Car.objects.filter(model=car_model)

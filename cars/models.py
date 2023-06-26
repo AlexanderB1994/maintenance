@@ -13,7 +13,7 @@ class Brand(models.Model):
 class CarModel(models.Model):
     name = models.CharField(max_length=100)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
-
+    body_type = models.ForeignKey(BodyType, on_delete=models.CASCADE)
 
 class Car(models.Model):
     model = models.ForeignKey(CarModel, on_delete=models.CASCADE)
