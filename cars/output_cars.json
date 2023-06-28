@@ -4,10 +4,10 @@
     {"id": 2, "name": "Hatchback"},
     {"id": 3, "name": "Coupe"},
     {"id": 4, "name": "Cabriolet"},
-    {"id": 5, "name": "SUV (Sport Utility Vehicle)"},
-    {"id": 6, "name": "Monovolum (MPV - Multi-Purpose Vehicle)"},
+    {"id": 5, "name": "SUV"},
+    {"id": 6, "name": "Monovolum"},
     {"id": 7, "name": "Crossover"},
-    {"id": 8, "name": "Break (Station Wagon)"},
+    {"id": 8, "name": "Break"},
     {"id": 9, "name": "Pick-up"},
     {"id": 10, "name": "Roadster"},
     {"id": 11, "name": "Supersport"}
@@ -623,21 +623,21 @@
         "id": 2,
         "year": 2021,
         "fuel_type": "Diesel",
-        "engine": 1498,
+        "engine": 1698,
         "fuel_consumption": 6.5,
         "cost_annual": 300,
         "major_repair": 1900,
-        "car_model_id": 1
+        "car_model_id": 41
     },
     {
         "id": 3,
         "year": 2019,
         "fuel_type": "Gasoline",
-        "engine": 3349,
+        "engine": 3449,
         "fuel_consumption": 9.5,
         "cost_annual": 900,
         "major_repair": 13500,
-        "car_model_id": 1
+        "car_model_id": 81
     }
   ]
 }
