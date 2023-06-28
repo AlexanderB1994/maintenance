@@ -1,7 +1,7 @@
 import json
+
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
-from django.core.exceptions import ObjectDoesNotExist
 from cars.models import BodyType, Brand, CarModel, Car
 
 
@@ -34,19 +34,6 @@ class Command(BaseCommand):
             except BodyType.DoesNotExist:
                 BodyType.objects.create(id=body_type_data['id'], name=body_type_data['name'])
 
-
-    # def create_brands(self, brands):
-    #     for brand_data in brands:
-    #         brand_id = brand_data['id']
-    #         brand_name = brand_data['name']
-    #         body_type_id = brand_data['body_type_id']
-    #         body_types = BodyType.objects.get(id=body_type_id)
-    #         try:
-    #             brand = Brand.objects.get(id=brand_id, name=brand_name)
-    #         except Brand.DoesNotExist:
-    #             brand = Brand.objects.create(id=brand_id, name=brand_name)
-    #         brand.body_type.set(body_types)
-
     def create_brands(self, brands):
         Brand.objects.all().delete()
         for brand_data in brands:
@@ -63,20 +50,6 @@ class Command(BaseCommand):
                 id__in=body_type_ids)
 
             brand.body_type.set(body_types)
-
-    # def create_car_models(self, car_models):
-    #     for car_model_data in car_models:
-    #         car_model_id = car_model_data['id']
-    #         car_model_name = car_model_data['name']
-    #         brand_id = car_model_data['brand_id']
-    #         try:
-    #             brand = Brand.objects.get(id=brand_id)
-    #         except Brand.DoesNotExist:
-    #             continue
-    #         try:
-    #             CarModel.objects.get(id=car_model_id, name=car_model_name, brand=brand)
-    #         except CarModel.DoesNotExist:
-    #             CarModel.objects.create(id=car_model_id, name=car_model_name, brand=brand)
 
     def create_car_models(self, car_models):
         for car_model_data in car_models:
@@ -100,7 +73,6 @@ class Command(BaseCommand):
             except CarModel.DoesNotExist:
                 car_model = CarModel.objects.create(id=car_model_id, name=car_model_name, brand=brand,
                                                     body_type=body_type)
-
 
     def create_cars(self, cars):
         for car_data in cars:
