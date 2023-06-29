@@ -45,7 +45,7 @@ def select_car(request, model_id):
         selected_fuel_type = request.POST.get('fuel_type')
         selected_engine = int(request.POST.get('engine'))
         car = cars.filter(year=selected_year, fuel_type=selected_fuel_type, engine=selected_engine).first()
-        return render(request, 'car_results.html', {'car': car})
+        return render(request, 'car_details.html', {'car': car})
     return render(request, 'select_car.html', {'car_model': car_model, 'cars': cars})
 
 
@@ -53,5 +53,5 @@ def car_details(request):
     if request.method == 'POST':
         car_id = int(request.POST.get('car_id'))
         car = Car.objects.get(id=car_id)
-        return render(request, 'car_results.html', {'car': car})
+        return render(request, 'car_details.html', {'car': car})
     return redirect('home')
